@@ -337,7 +337,7 @@ const HEADERS = ["index", "card_no", "card_name", "type", "brand", "category", "
   }
   function csvEscape(v){v=(v??'').toString();return /[",\r\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;}
   function exportRows(data,name){
-    const lines=[HEADERS.map(csvEscape).join(',')];data.forEach(r=>lines.push(HEADERS.map(h=>csvEscape(r[h]??'')).join(','));
+    const lines=[HEADERS.map(csvEscape).join(',')];data.forEach(r=>lines.push(HEADERS.map(h=>csvEscape(r[h]??'')).join(',')));
     const blob=new Blob(["\uFEFF"+lines.join('\r\n')],{type:'text/csv;charset=utf-8'}),a=document.createElement('a');
     a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500);
   }
