@@ -12,23 +12,17 @@
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic",Meiryo,sans-serif}
 body{min-height:100vh}
-.app{max-width:760px;margin:auto;padding:8px 10px 90px}
+.app{max-width:760px;margin:auto;padding:8px 10px 92px}
 .hidden{display:none!important}
 
 .topbar{
-  position:sticky;top:0;z-index:12;background:rgba(255,247,251,.96);backdrop-filter:blur(10px);
+  position:sticky;top:0;z-index:12;background:rgba(255,247,251,.97);backdrop-filter:blur(10px);
   padding:6px 0 8px;
 }
-.topcontrols{
-  display:grid;grid-template-columns:1.3fr .9fr;gap:7px;margin-bottom:7px
-}
+.topcontrols{display:grid;grid-template-columns:1.25fr .75fr;gap:7px;margin-bottom:7px}
 select,button,input,textarea{font:inherit}
-select,input,textarea{
-  width:100%;border:1px solid var(--line);border-radius:10px;padding:9px;background:#fff;color:var(--text)
-}
-button{
-  border:0;border-radius:11px;padding:10px 12px;background:#f8ecf4;color:#452c3c;font-weight:700;cursor:pointer
-}
+select,input,textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:9px;background:#fff;color:var(--text)}
+button{border:0;border-radius:11px;padding:10px 12px;background:#f8ecf4;color:#452c3c;font-weight:700;cursor:pointer}
 button.primary{background:var(--accent);color:#fff}
 button.secondary{background:var(--accent2);color:#fff}
 button.ok{background:var(--ok);color:#fff}
@@ -37,16 +31,23 @@ button.danger{background:#ffe8ec;color:#a13043}
 button:disabled{opacity:.45}
 
 .current{
-  display:grid;grid-template-columns:68px 1fr;gap:10px;background:#fff;border:1px solid var(--line);
+  display:grid;grid-template-columns:82px 1fr;gap:10px;background:#fff;border:1px solid var(--line);
   border-radius:15px;padding:8px;box-shadow:0 3px 14px rgba(228,85,168,.08)
 }
 .thumb{
-  width:68px;height:102px;border-radius:10px;object-fit:contain;background:#faf3f8;border:1px solid var(--line)
+  width:82px;height:123px;border-radius:10px;object-fit:contain;background:#faf3f8;border:1px solid var(--line)
 }
 .number{font-size:16px;font-weight:900;color:var(--accent);margin-bottom:2px}
-.name{font-size:16px;font-weight:800;line-height:1.25;margin-bottom:5px}
-.chips{display:flex;gap:5px;flex-wrap:wrap}
-.chip{font-size:10px;padding:4px 7px;border-radius:999px;background:#f7eff4}
+.name{font-size:16px;font-weight:800;line-height:1.25;margin-bottom:7px}
+.infoGrid{
+  display:grid;grid-template-columns:1fr 1fr;gap:4px 8px;margin-bottom:6px
+}
+.infoItem{font-size:11px;line-height:1.3}
+.infoLabel{color:var(--muted);margin-right:4px}
+.dresskey{
+  font-size:10px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  margin-top:2px
+}
 .progressrow{display:flex;justify-content:space-between;gap:8px;font-size:11px;color:var(--muted);margin-top:6px}
 .bar{height:6px;background:#faeaf3;border-radius:999px;overflow:hidden;margin-top:3px}
 .bar>div{height:100%;background:linear-gradient(90deg,var(--accent),#f87ab8);width:0%}
@@ -56,58 +57,43 @@ button:disabled{opacity:.45}
   box-shadow:0 3px 14px rgba(228,85,168,.06)
 }
 #reader{width:100%;max-width:520px;margin:0 auto;overflow:hidden;border-radius:12px}
-.scanmsg{
-  font-weight:800;text-align:center;padding:8px;border-radius:10px;background:#fbf0f6;margin-top:7px;font-size:13px
-}
+.scanmsg{font-weight:800;text-align:center;padding:8px;border-radius:10px;background:#fbf0f6;margin-top:7px;font-size:13px}
 .scanmsg.ok{background:#e8f9f0;color:#1e8753}
 .scanmsg.warn{background:#fff4df;color:#8b5e00}
 .scanmsg.danger{background:#ffe9ec;color:#b23047}
-
-.scanbuttons{
-  display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:7px
-}
-.nav{
-  display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-top:7px
-}
+.scanbuttons{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:7px}
+.nav{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-top:7px}
 .qrstate{
   margin-top:7px;padding:7px 9px;border-radius:10px;background:#fffafd;border:1px dashed #ebb8d4;
   font-size:11px;word-break:break-all;max-height:46px;overflow:auto
 }
 
-details{
-  background:#fff;border:1px solid var(--line);border-radius:15px;padding:10px;margin-top:10px
-}
+details{background:#fff;border:1px solid var(--line);border-radius:15px;padding:10px;margin-top:10px}
 summary{font-weight:800;cursor:pointer}
 .section{margin-top:10px}
 .tiny{font-size:11px;color:var(--muted)}
 .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .grow{flex:1 1 220px}
 .searchbox{display:grid;grid-template-columns:1fr auto;gap:7px}
+
 .stickyBottom{
-  position:fixed;left:0;right:0;bottom:0;z-index:15;
-  background:rgba(255,247,251,.97);backdrop-filter:blur(10px);
+  position:fixed;left:0;right:0;bottom:0;z-index:15;background:rgba(255,247,251,.97);backdrop-filter:blur(10px);
   border-top:1px solid var(--line);padding:7px max(10px,env(safe-area-inset-right)) calc(7px + env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left))
 }
 .stickyBottom .inner{max-width:760px;margin:auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}
-.flash{
-  position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:50;
-  pointer-events:none;opacity:0;transition:opacity .18s;background:rgba(255,255,255,.82)
-}
+
+.flash{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:50;pointer-events:none;opacity:0;transition:opacity .18s;background:rgba(255,255,255,.82)}
 .flash.show{opacity:1}
-.flashBox{
-  background:#fff;border:2px solid #bfe8d0;border-radius:20px;padding:20px 24px;text-align:center;
-  box-shadow:0 8px 28px rgba(0,0,0,.12);max-width:85%
-}
+.flashBox{background:#fff;border:2px solid #bfe8d0;border-radius:20px;padding:20px 24px;text-align:center;box-shadow:0 8px 28px rgba(0,0,0,.12);max-width:85%}
 .flashCheck{font-size:42px;color:var(--ok);line-height:1}
 .flashName{font-weight:900;font-size:18px;margin-top:6px}
 .flashNo{font-size:13px;color:var(--muted);margin-top:3px}
 
-@media (max-height:720px){
-  .thumb{width:58px;height:87px}
-  .current{grid-template-columns:58px 1fr}
-  .name{font-size:15px}
-  .scannerPanel{padding:6px}
-  .scanmsg{padding:6px}
+@media(max-height:720px){
+  .thumb{width:70px;height:105px}
+  .current{grid-template-columns:70px 1fr}
+  .name{font-size:15px;margin-bottom:4px}
+  .infoItem{font-size:10px}
 }
 </style>
 </head>
@@ -128,7 +114,16 @@ summary{font-weight:800;cursor:pointer}
       <div>
         <div class="number" id="cardNo"></div>
         <div class="name" id="cardName"></div>
-        <div class="chips" id="chips"></div>
+
+        <div class="infoGrid">
+          <div class="infoItem"><span class="infoLabel">タイプ</span><strong id="infoType">-</strong></div>
+          <div class="infoItem"><span class="infoLabel">種類</span><strong id="infoCategory">-</strong></div>
+          <div class="infoItem"><span class="infoLabel">レア</span><strong id="infoRarity">-</strong></div>
+          <div class="infoItem"><span class="infoLabel">ブランド</span><strong id="infoBrand">-</strong></div>
+        </div>
+
+        <div class="dresskey" id="dressKeyTop"></div>
+
         <div class="progressrow">
           <span id="positionText"></span>
           <span id="progressText"></span>
@@ -140,26 +135,21 @@ summary{font-weight:800;cursor:pointer}
 
   <section class="scannerPanel">
     <div id="reader"></div>
-
     <div class="scanbuttons">
       <button id="startScanBtn" class="primary">カメラを開始</button>
       <button id="stopScanBtn" disabled>カメラ停止</button>
     </div>
-
     <div id="scanMsg" class="scanmsg">「カメラを開始」を押してください。</div>
-
     <div class="nav">
       <button id="prevBtn">← 前へ</button>
       <button id="skipBtn" class="warn">スキップ</button>
       <button id="nextBtn">次へ →</button>
     </div>
-
     <div id="currentQr" class="qrstate">QR未登録</div>
   </section>
 
   <details>
     <summary>検索・設定・CSV出力</summary>
-
     <div class="section">
       <label class="tiny">カード番号・カード名で検索</label>
       <div class="searchbox">
@@ -167,7 +157,6 @@ summary{font-weight:800;cursor:pointer}
         <button id="clearSearch">クリア</button>
       </div>
     </div>
-
     <div class="section row">
       <div class="grow">
         <label class="tiny">自動送り</label>
@@ -182,7 +171,6 @@ summary{font-weight:800;cursor:pointer}
       <button id="jumpPrevUnreg">← 前の未登録</button>
       <button id="jumpNextUnreg" class="secondary">次の未登録 →</button>
     </div>
-
     <div class="section">
       <label class="tiny">手動入力</label>
       <textarea id="manualQr" rows="2" placeholder="QR URLを貼り付け"></textarea>
@@ -191,10 +179,8 @@ summary{font-weight:800;cursor:pointer}
         <button id="clearQrBtn">現在QRを削除</button>
       </div>
     </div>
-
     <div class="section tiny" id="dressKey"></div>
     <div class="section"><a id="detailLink" class="tiny" href="#" target="_blank" rel="noopener noreferrer">公式詳細ページ</a></div>
-
     <div class="section row">
       <button id="exportVolumeBtn" class="ok">この弾をCSV出力</button>
       <button id="exportAllBtn" class="ok">全11弾をCSV出力</button>
@@ -230,8 +216,9 @@ const HEADERS = ["index", "card_no", "card_name", "type", "brand", "category", "
     volume:$('#volumeSelect'), filter:$('#filterSelect'), autoNext:$('#autoNext'),
     search:$('#searchInput'), clearSearch:$('#clearSearch'),
     progressText:$('#progressText'), positionText:$('#positionText'), progressBar:$('#progressBar'),
-    cardImg:$('#cardImg'), cardNo:$('#cardNo'), cardName:$('#cardName'), chips:$('#chips'),
-    dressKey:$('#dressKey'), detailLink:$('#detailLink'), currentQr:$('#currentQr'),
+    cardImg:$('#cardImg'), cardNo:$('#cardNo'), cardName:$('#cardName'),
+    infoType:$('#infoType'), infoCategory:$('#infoCategory'), infoRarity:$('#infoRarity'), infoBrand:$('#infoBrand'),
+    dressKeyTop:$('#dressKeyTop'), dressKey:$('#dressKey'), detailLink:$('#detailLink'), currentQr:$('#currentQr'),
     prev:$('#prevBtn'), next:$('#nextBtn'), skip:$('#skipBtn'),
     bPrev:$('#bottomPrev'), bNext:$('#bottomNext'), bSkip:$('#bottomSkip'),
     start:$('#startScanBtn'), stop:$('#stopScanBtn'), clearQr:$('#clearQrBtn'),
@@ -241,13 +228,12 @@ const HEADERS = ["index", "card_no", "card_name", "type", "brand", "category", "
     flash:$('#flash'), flashName:$('#flashName'), flashNo:$('#flashNo')
   };
 
-  const STORAGE_KEY='aikatsu_stars_mobile_scan_v2';
+  const STORAGE_KEY='aikatsu_stars_mobile_scan_v3';
   let rows=JSON.parse(JSON.stringify(EMBEDDED_ROWS));
   let currentIndex=0, activeIndices=[], scanner=null, scanning=false, lastScan='', lastScanAt=0, flashTimer=null;
 
   const norm=v=>(v??'').toString().trim();
   const esc=s=>(s??'').toString().replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-
   function rowKey(r){return norm(r.dress_key)||`${norm(r.volume)}|${norm(r.card_no)}|${norm(r.card_name)}`;}
   function inferType(r){
     if(norm(r.type)) return norm(r.type);
@@ -265,9 +251,7 @@ const HEADERS = ["index", "card_no", "card_name", "type", "brand", "category", "
   function save(){
     try{
       const qr={};rows.forEach(r=>{if(norm(r.qr_url))qr[rowKey(r)]=r.qr_url});
-      localStorage.setItem(STORAGE_KEY,JSON.stringify({
-        qr,currentKey:rowKey(rows[currentIndex]||{}),volume:E.volume.value,filter:E.filter.value,search:E.search.value
-      }));
+      localStorage.setItem(STORAGE_KEY,JSON.stringify({qr,currentKey:rowKey(rows[currentIndex]||{}),volume:E.volume.value,filter:E.filter.value,search:E.search.value}));
     }catch(e){}
   }
   function restore(){
@@ -301,22 +285,34 @@ const HEADERS = ["index", "card_no", "card_name", "type", "brand", "category", "
     E.progressText.textContent=`${reg}/${volumeRows.length} 登録`;
     E.positionText.textContent=activeIndices.length?`${p+1}/${activeIndices.length}`:'対象なし';
     E.progressBar.style.width=(volumeRows.length?reg/volumeRows.length*100:0).toFixed(1)+'%';
-    E.cardNo.textContent=norm(r.card_no);E.cardName.textContent=norm(r.card_name);
-    E.cardImg.src=norm(r.image_url);E.cardImg.alt=norm(r.card_name);
-    const info=[inferType(r),norm(r.category),norm(r.rarity),norm(r.brand)].filter(Boolean);
-    E.chips.innerHTML=info.map(x=>`<span class="chip">${esc(x)}</span>`).join('');
-    E.dressKey.textContent=norm(r.dress_key)?`dress_key: ${norm(r.dress_key)}`:'';
+
+    E.cardNo.textContent=norm(r.card_no);
+    E.cardName.textContent=norm(r.card_name);
+    E.cardImg.src=norm(r.image_url);
+    E.cardImg.alt=norm(r.card_name);
+
+    E.infoType.textContent=inferType(r)||'-';
+    E.infoCategory.textContent=norm(r.category)||'-';
+    E.infoRarity.textContent=norm(r.rarity)||'-';
+    E.infoBrand.textContent=norm(r.brand)||'-';
+
+    const dk=norm(r.dress_key);
+    E.dressKeyTop.textContent=dk?`dress_key: ${dk}`:'dress_key: -';
+    E.dressKey.textContent=dk?`dress_key: ${dk}`:'';
+
     if(norm(r.detail_url)){E.detailLink.href=r.detail_url;E.detailLink.classList.remove('hidden')}else E.detailLink.classList.add('hidden');
-    const qr=norm(r.qr_url);E.currentQr.textContent=qr||'QR未登録';E.currentQr.style.color=qr?'var(--ok)':'var(--muted)';E.manualQr.value=qr;
+
+    const qr=norm(r.qr_url);
+    E.currentQr.textContent=qr||'QR未登録';
+    E.currentQr.style.color=qr?'var(--ok)':'var(--muted)';
+    E.manualQr.value=qr;
     save();
   }
   function msg(t,k=''){E.scanMsg.className='scanmsg'+(k?' '+k:'');E.scanMsg.textContent=t;}
   function flash(r){
     clearTimeout(flashTimer);
-    E.flashName.textContent=norm(r.card_name);
-    E.flashNo.textContent=norm(r.card_no);
-    E.flash.classList.add('show');
-    flashTimer=setTimeout(()=>E.flash.classList.remove('show'),420);
+    E.flashName.textContent=norm(r.card_name);E.flashNo.textContent=norm(r.card_no);
+    E.flash.classList.add('show');flashTimer=setTimeout(()=>E.flash.classList.remove('show'),420);
   }
   function dupOwner(qr){return rows.findIndex((r,i)=>i!==currentIndex&&norm(r.qr_url)===norm(qr));}
   function register(qr){
@@ -326,11 +322,7 @@ const HEADERS = ["index", "card_no", "card_name", "type", "brand", "category", "
       const o=rows[d];
       if(!confirm(`このQRは登録済みです。\n\n${o.volume} / ${o.card_no} ${o.card_name}\n\n現在のカードにも登録しますか？`))return;
     }
-    const scannedRow=rows[currentIndex];
-    scannedRow.qr_url=qr;
-    flash(scannedRow);
-    msg(`✓ ${scannedRow.card_no} 登録完了`,'ok');
-    render();
+    const scannedRow=rows[currentIndex];scannedRow.qr_url=qr;flash(scannedRow);msg(`✓ ${scannedRow.card_no} 登録完了`,'ok');render();
     const delay=Number(E.autoNext.value);if(delay>0)setTimeout(()=>move(1),delay);
   }
   function move(delta){
@@ -357,7 +349,7 @@ const HEADERS = ["index", "card_no", "card_name", "type", "brand", "category", "
       await scanner.start({facingMode:'environment'},{fps:12,qrbox:{width:230,height:230},aspectRatio:1},decoded=>{
         const now=Date.now();if(decoded===lastScan&&now-lastScanAt<1800)return;lastScan=decoded;lastScanAt=now;register(decoded);
       },()=>{});
-      scanning=true;E.start.disabled=true;E.stop.disabled=false;msg('カメラ起動中。上のカードを見ながらQRを読み取ってください。');
+      scanning=true;E.start.disabled=true;E.stop.disabled=false;msg('カメラ起動中。上のカード情報を確認しながらQRを読み取ってください。');
     }catch(e){msg('カメラを開始できません。HTTPSとカメラ許可を確認してください。','danger');}
   }
   async function stopScanner(){if(!scanner||!scanning)return;try{await scanner.stop()}catch(e){}scanning=false;E.start.disabled=false;E.stop.disabled=true;msg('カメラを停止しました。');}
