@@ -10,148 +10,213 @@
   --accent:#e455a8; --accent2:#7658e8; --ok:#20a464; --warn:#d18a00; --danger:#d94b59;
 }
 *{box-sizing:border-box}
-body{margin:0;background:linear-gradient(#fff9fc,#fff4fa);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic",Meiryo,sans-serif}
-.app{max-width:980px;margin:auto;padding:14px 14px 96px}
-h1{font-size:20px;margin:6px 0 14px}
-.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:12px;box-shadow:0 3px 14px rgba(228,85,168,.06)}
-.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.grow{flex:1 1 220px}
-button,select,input,textarea{font:inherit}
-button{border:0;border-radius:12px;padding:11px 14px;background:#f8ecf4;color:#452c3c;font-weight:700;cursor:pointer}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic",Meiryo,sans-serif}
+body{min-height:100vh}
+.app{max-width:760px;margin:auto;padding:8px 10px 90px}
+.hidden{display:none!important}
+
+.topbar{
+  position:sticky;top:0;z-index:12;background:rgba(255,247,251,.96);backdrop-filter:blur(10px);
+  padding:6px 0 8px;
+}
+.topcontrols{
+  display:grid;grid-template-columns:1.3fr .9fr;gap:7px;margin-bottom:7px
+}
+select,button,input,textarea{font:inherit}
+select,input,textarea{
+  width:100%;border:1px solid var(--line);border-radius:10px;padding:9px;background:#fff;color:var(--text)
+}
+button{
+  border:0;border-radius:11px;padding:10px 12px;background:#f8ecf4;color:#452c3c;font-weight:700;cursor:pointer
+}
 button.primary{background:var(--accent);color:#fff}
 button.secondary{background:var(--accent2);color:#fff}
 button.ok{background:var(--ok);color:#fff}
 button.warn{background:#fff3da;color:#8b5e00}
 button.danger{background:#ffe8ec;color:#a13043}
-button:disabled{opacity:.45;cursor:not-allowed}
-select,input,textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:10px;background:#fff;color:var(--text)}
-.tiny{font-size:12px;color:var(--muted)}
-.statusline{display:flex;justify-content:space-between;gap:12px;font-size:14px;margin-bottom:7px}
-.bar{height:10px;background:#faeaf3;border-radius:999px;overflow:hidden}
+button:disabled{opacity:.45}
+
+.current{
+  display:grid;grid-template-columns:68px 1fr;gap:10px;background:#fff;border:1px solid var(--line);
+  border-radius:15px;padding:8px;box-shadow:0 3px 14px rgba(228,85,168,.08)
+}
+.thumb{
+  width:68px;height:102px;border-radius:10px;object-fit:contain;background:#faf3f8;border:1px solid var(--line)
+}
+.number{font-size:16px;font-weight:900;color:var(--accent);margin-bottom:2px}
+.name{font-size:16px;font-weight:800;line-height:1.25;margin-bottom:5px}
+.chips{display:flex;gap:5px;flex-wrap:wrap}
+.chip{font-size:10px;padding:4px 7px;border-radius:999px;background:#f7eff4}
+.progressrow{display:flex;justify-content:space-between;gap:8px;font-size:11px;color:var(--muted);margin-top:6px}
+.bar{height:6px;background:#faeaf3;border-radius:999px;overflow:hidden;margin-top:3px}
 .bar>div{height:100%;background:linear-gradient(90deg,var(--accent),#f87ab8);width:0%}
-.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-.badge{font-size:12px;border-radius:999px;padding:6px 10px;background:#f9eef5}
-.badge.ok{background:#e8f9f0;color:#1e8753}
-.badge.warn{background:#fff3da;color:#8b5e00}
-.cardwrap{display:grid;grid-template-columns:minmax(120px,230px) 1fr;gap:14px}
-.cardimg{width:100%;aspect-ratio:2/3;border-radius:14px;background:#f8f1f6;border:1px solid var(--line);object-fit:contain}
-.number{font-weight:900;color:var(--accent);font-size:17px}
-.meta h2{font-size:20px;margin:0 0 6px}
-.chips{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}
-.chip{font-size:12px;padding:5px 9px;border-radius:999px;background:#f7eff4}
-.qrbox{margin-top:12px;padding:11px;border:1px dashed #ebb8d4;border-radius:12px;word-break:break-all;background:#fffafd;font-size:12px}
-.nav{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px}
-#reader{width:100%;max-width:560px;margin:0 auto;overflow:hidden;border-radius:14px}
-.scanmsg{font-weight:800;text-align:center;padding:10px;border-radius:12px;background:#fbf0f6;margin-top:10px}
+
+.scannerPanel{
+  background:#fff;border:1px solid var(--line);border-radius:16px;padding:8px;margin-top:8px;
+  box-shadow:0 3px 14px rgba(228,85,168,.06)
+}
+#reader{width:100%;max-width:520px;margin:0 auto;overflow:hidden;border-radius:12px}
+.scanmsg{
+  font-weight:800;text-align:center;padding:8px;border-radius:10px;background:#fbf0f6;margin-top:7px;font-size:13px
+}
 .scanmsg.ok{background:#e8f9f0;color:#1e8753}
 .scanmsg.warn{background:#fff4df;color:#8b5e00}
 .scanmsg.danger{background:#ffe9ec;color:#b23047}
-.sticky{position:sticky;bottom:0;background:linear-gradient(transparent,rgba(255,245,251,.97) 20%);padding-top:18px}
-.searchbox{display:grid;grid-template-columns:1fr auto;gap:8px}
-.hidden{display:none!important}
-@media(max-width:650px){
-  .cardwrap{grid-template-columns:115px 1fr;gap:12px}
-  .meta h2{font-size:18px}
-  .nav{grid-template-columns:1fr 1fr}
-  .nav button:nth-child(2){grid-column:1/3}
+
+.scanbuttons{
+  display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:7px
+}
+.nav{
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-top:7px
+}
+.qrstate{
+  margin-top:7px;padding:7px 9px;border-radius:10px;background:#fffafd;border:1px dashed #ebb8d4;
+  font-size:11px;word-break:break-all;max-height:46px;overflow:auto
+}
+
+details{
+  background:#fff;border:1px solid var(--line);border-radius:15px;padding:10px;margin-top:10px
+}
+summary{font-weight:800;cursor:pointer}
+.section{margin-top:10px}
+.tiny{font-size:11px;color:var(--muted)}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.grow{flex:1 1 220px}
+.searchbox{display:grid;grid-template-columns:1fr auto;gap:7px}
+.stickyBottom{
+  position:fixed;left:0;right:0;bottom:0;z-index:15;
+  background:rgba(255,247,251,.97);backdrop-filter:blur(10px);
+  border-top:1px solid var(--line);padding:7px max(10px,env(safe-area-inset-right)) calc(7px + env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left))
+}
+.stickyBottom .inner{max-width:760px;margin:auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}
+.flash{
+  position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:50;
+  pointer-events:none;opacity:0;transition:opacity .18s;background:rgba(255,255,255,.82)
+}
+.flash.show{opacity:1}
+.flashBox{
+  background:#fff;border:2px solid #bfe8d0;border-radius:20px;padding:20px 24px;text-align:center;
+  box-shadow:0 8px 28px rgba(0,0,0,.12);max-width:85%
+}
+.flashCheck{font-size:42px;color:var(--ok);line-height:1}
+.flashName{font-weight:900;font-size:18px;margin-top:6px}
+.flashNo{font-size:13px;color:var(--muted);margin-top:3px}
+
+@media (max-height:720px){
+  .thumb{width:58px;height:87px}
+  .current{grid-template-columns:58px 1fr}
+  .name{font-size:15px}
+  .scannerPanel{padding:6px}
+  .scanmsg{padding:6px}
 }
 </style>
 </head>
 <body>
 <div class="app">
-<h1>アイカツスターズ！QRスキャン</h1>
-
-<section class="panel">
-  <div class="row">
-    <div class="grow">
-      <label class="tiny">弾</label>
+  <div class="topbar">
+    <div class="topcontrols">
       <select id="volumeSelect"></select>
-    </div>
-    <div style="min-width:150px">
-      <label class="tiny">表示</label>
       <select id="filterSelect">
         <option value="all">すべて</option>
         <option value="unregistered">未登録のみ</option>
         <option value="registered">登録済みのみ</option>
       </select>
     </div>
-    <div style="min-width:130px">
-      <label class="tiny">自動送り</label>
-      <select id="autoNext">
-        <option value="500">0.5秒</option>
-        <option value="700" selected>0.7秒</option>
-        <option value="1000">1.0秒</option>
-        <option value="1500">1.5秒</option>
-        <option value="0">しない</option>
-      </select>
+
+    <div class="current">
+      <img id="cardImg" class="thumb" alt="">
+      <div>
+        <div class="number" id="cardNo"></div>
+        <div class="name" id="cardName"></div>
+        <div class="chips" id="chips"></div>
+        <div class="progressrow">
+          <span id="positionText"></span>
+          <span id="progressText"></span>
+        </div>
+        <div class="bar"><div id="progressBar"></div></div>
+      </div>
     </div>
   </div>
 
-  <div class="searchbox" style="margin-top:10px">
-    <input id="searchInput" type="text" placeholder="カード番号・カード名で検索">
-    <button id="clearSearch">クリア</button>
-  </div>
+  <section class="scannerPanel">
+    <div id="reader"></div>
 
-  <div style="margin-top:12px">
-    <div class="statusline"><span id="progressText"></span><span id="positionText"></span></div>
-    <div class="bar"><div id="progressBar"></div></div>
-  </div>
-  <div class="badges">
-    <span class="badge ok" id="registeredBadge"></span>
-    <span class="badge warn" id="remainingBadge"></span>
-    <span class="badge" id="allBadge"></span>
-  </div>
-</section>
-
-<section class="panel">
-  <div class="cardwrap">
-    <img id="cardImg" class="cardimg" alt="">
-    <div class="meta">
-      <div class="number" id="cardNo"></div>
-      <h2 id="cardName"></h2>
-      <div class="chips" id="chips"></div>
-      <div class="tiny" id="dressKey"></div>
-      <a id="detailLink" class="tiny" href="#" target="_blank" rel="noopener noreferrer">公式詳細ページ</a>
-      <div class="qrbox" id="currentQr">QR未登録</div>
+    <div class="scanbuttons">
+      <button id="startScanBtn" class="primary">カメラを開始</button>
+      <button id="stopScanBtn" disabled>カメラ停止</button>
     </div>
-  </div>
-  <div class="nav">
-    <button id="prevBtn">← 前へ</button>
-    <button id="skipBtn" class="warn">スキップ</button>
-    <button id="nextBtn">次へ →</button>
-  </div>
-</section>
 
-<section class="panel">
-  <div class="row" style="margin-bottom:10px">
-    <button id="startScanBtn" class="primary">カメラを開始</button>
-    <button id="stopScanBtn" disabled>カメラ停止</button>
-    <button id="clearQrBtn">現在QRを削除</button>
-  </div>
-  <div id="reader"></div>
-  <div id="scanMsg" class="scanmsg">「カメラを開始」を押してQRを読み取ってください。</div>
+    <div id="scanMsg" class="scanmsg">「カメラを開始」を押してください。</div>
 
-  <div style="margin-top:12px">
-    <label class="tiny">手動入力</label>
-    <textarea id="manualQr" rows="2" placeholder="QR URLを貼り付け"></textarea>
-    <div class="row" style="margin-top:8px">
-      <button id="manualSaveBtn">現在のカードに登録</button>
+    <div class="nav">
+      <button id="prevBtn">← 前へ</button>
+      <button id="skipBtn" class="warn">スキップ</button>
+      <button id="nextBtn">次へ →</button>
     </div>
-  </div>
-</section>
 
-<div class="sticky">
-<section class="panel">
-  <div class="row">
-    <button id="jumpPrevUnreg">← 前の未登録</button>
-    <button id="jumpNextUnreg" class="secondary">次の未登録 →</button>
-    <div class="grow"></div>
-    <button id="exportVolumeBtn" class="ok">この弾をCSV出力</button>
-    <button id="exportAllBtn" class="ok">全11弾をCSV出力</button>
-    <button id="resetBtn" class="danger">登録データを全消去</button>
-  </div>
-</section>
+    <div id="currentQr" class="qrstate">QR未登録</div>
+  </section>
+
+  <details>
+    <summary>検索・設定・CSV出力</summary>
+
+    <div class="section">
+      <label class="tiny">カード番号・カード名で検索</label>
+      <div class="searchbox">
+        <input id="searchInput" type="text" placeholder="例: 1-4 / ピクニック">
+        <button id="clearSearch">クリア</button>
+      </div>
+    </div>
+
+    <div class="section row">
+      <div class="grow">
+        <label class="tiny">自動送り</label>
+        <select id="autoNext">
+          <option value="500">0.5秒</option>
+          <option value="700" selected>0.7秒</option>
+          <option value="1000">1.0秒</option>
+          <option value="1500">1.5秒</option>
+          <option value="0">しない</option>
+        </select>
+      </div>
+      <button id="jumpPrevUnreg">← 前の未登録</button>
+      <button id="jumpNextUnreg" class="secondary">次の未登録 →</button>
+    </div>
+
+    <div class="section">
+      <label class="tiny">手動入力</label>
+      <textarea id="manualQr" rows="2" placeholder="QR URLを貼り付け"></textarea>
+      <div class="row" style="margin-top:7px">
+        <button id="manualSaveBtn">現在のカードに登録</button>
+        <button id="clearQrBtn">現在QRを削除</button>
+      </div>
+    </div>
+
+    <div class="section tiny" id="dressKey"></div>
+    <div class="section"><a id="detailLink" class="tiny" href="#" target="_blank" rel="noopener noreferrer">公式詳細ページ</a></div>
+
+    <div class="section row">
+      <button id="exportVolumeBtn" class="ok">この弾をCSV出力</button>
+      <button id="exportAllBtn" class="ok">全11弾をCSV出力</button>
+      <button id="resetBtn" class="danger">登録データを全消去</button>
+    </div>
+  </details>
 </div>
+
+<div class="stickyBottom">
+  <div class="inner">
+    <button id="bottomPrev">← 前</button>
+    <button id="bottomSkip" class="warn">スキップ</button>
+    <button id="bottomNext">次 →</button>
+  </div>
+</div>
+
+<div id="flash" class="flash">
+  <div class="flashBox">
+    <div class="flashCheck">✓</div>
+    <div class="flashName" id="flashName"></div>
+    <div class="flashNo" id="flashNo"></div>
+  </div>
 </div>
 
 <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
@@ -165,26 +230,25 @@ const HEADERS = ["index", "card_no", "card_name", "type", "brand", "category", "
     volume:$('#volumeSelect'), filter:$('#filterSelect'), autoNext:$('#autoNext'),
     search:$('#searchInput'), clearSearch:$('#clearSearch'),
     progressText:$('#progressText'), positionText:$('#positionText'), progressBar:$('#progressBar'),
-    registeredBadge:$('#registeredBadge'), remainingBadge:$('#remainingBadge'), allBadge:$('#allBadge'),
     cardImg:$('#cardImg'), cardNo:$('#cardNo'), cardName:$('#cardName'), chips:$('#chips'),
     dressKey:$('#dressKey'), detailLink:$('#detailLink'), currentQr:$('#currentQr'),
     prev:$('#prevBtn'), next:$('#nextBtn'), skip:$('#skipBtn'),
+    bPrev:$('#bottomPrev'), bNext:$('#bottomNext'), bSkip:$('#bottomSkip'),
     start:$('#startScanBtn'), stop:$('#stopScanBtn'), clearQr:$('#clearQrBtn'),
     reader:$('#reader'), scanMsg:$('#scanMsg'), manualQr:$('#manualQr'), manualSave:$('#manualSaveBtn'),
     jumpPrev:$('#jumpPrevUnreg'), jumpNext:$('#jumpNextUnreg'),
-    exportVolume:$('#exportVolumeBtn'), exportAll:$('#exportAllBtn'), reset:$('#resetBtn')
+    exportVolume:$('#exportVolumeBtn'), exportAll:$('#exportAllBtn'), reset:$('#resetBtn'),
+    flash:$('#flash'), flashName:$('#flashName'), flashNo:$('#flashNo')
   };
 
-  const STORAGE_KEY='aikatsu_stars_all11_embedded_scan_v1';
+  const STORAGE_KEY='aikatsu_stars_mobile_scan_v2';
   let rows=JSON.parse(JSON.stringify(EMBEDDED_ROWS));
-  let currentIndex=0, activeIndices=[], scanner=null, scanning=false, lastScan='', lastScanAt=0;
+  let currentIndex=0, activeIndices=[], scanner=null, scanning=false, lastScan='', lastScanAt=0, flashTimer=null;
 
   const norm=v=>(v??'').toString().trim();
   const esc=s=>(s??'').toString().replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-  function rowKey(r){
-    return norm(r.dress_key) || `${norm(r.volume)}|${norm(r.card_no)}|${norm(r.card_name)}`;
-  }
+  function rowKey(r){return norm(r.dress_key)||`${norm(r.volume)}|${norm(r.card_no)}|${norm(r.card_name)}`;}
   function inferType(r){
     if(norm(r.type)) return norm(r.type);
     const dk=norm(r.dress_key);
@@ -195,164 +259,122 @@ const HEADERS = ["index", "card_no", "card_name", "type", "brand", "category", "
     return '';
   }
   function setupVolumes(){
-    const vols=[];
-    rows.forEach(r=>{ if(!vols.includes(r.volume)) vols.push(r.volume); });
+    const vols=[];rows.forEach(r=>{if(!vols.includes(r.volume))vols.push(r.volume)});
     E.volume.innerHTML=vols.map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join('');
   }
   function save(){
     try{
-      const qr={};
-      rows.forEach(r=>{ if(norm(r.qr_url)) qr[rowKey(r)]=r.qr_url; });
+      const qr={};rows.forEach(r=>{if(norm(r.qr_url))qr[rowKey(r)]=r.qr_url});
       localStorage.setItem(STORAGE_KEY,JSON.stringify({
-        qr,currentKey:rowKey(rows[currentIndex]||{}),volume:E.volume.value,
-        filter:E.filter.value,search:E.search.value
+        qr,currentKey:rowKey(rows[currentIndex]||{}),volume:E.volume.value,filter:E.filter.value,search:E.search.value
       }));
     }catch(e){}
   }
   function restore(){
     try{
-      const raw=localStorage.getItem(STORAGE_KEY); if(!raw) return;
+      const raw=localStorage.getItem(STORAGE_KEY);if(!raw)return;
       const st=JSON.parse(raw);
-      if(st.qr) rows.forEach(r=>{ if(st.qr[rowKey(r)]) r.qr_url=st.qr[rowKey(r)]; });
-      if(st.volume) E.volume.value=st.volume;
-      if(st.filter) E.filter.value=st.filter;
-      if(st.search) E.search.value=st.search;
-      if(st.currentKey){
-        const i=rows.findIndex(r=>rowKey(r)===st.currentKey);
-        if(i>=0) currentIndex=i;
-      }
+      if(st.qr)rows.forEach(r=>{if(st.qr[rowKey(r)])r.qr_url=st.qr[rowKey(r)]});
+      if(st.volume)E.volume.value=st.volume;
+      if(st.filter)E.filter.value=st.filter;
+      if(st.search)E.search.value=st.search;
+      if(st.currentKey){const i=rows.findIndex(r=>rowKey(r)===st.currentKey);if(i>=0)currentIndex=i}
     }catch(e){}
   }
   function applyFilter(reset=false){
-    const v=E.volume.value, f=E.filter.value, q=norm(E.search.value).toLowerCase();
+    const v=E.volume.value,f=E.filter.value,q=norm(E.search.value).toLowerCase();
     activeIndices=rows.map((r,i)=>i).filter(i=>{
-      const r=rows[i];
-      if(norm(r.volume)!==v) return false;
+      const r=rows[i];if(norm(r.volume)!==v)return false;
       const has=!!norm(r.qr_url);
-      if(f==='unregistered' && has) return false;
-      if(f==='registered' && !has) return false;
-      if(q && !(norm(r.card_no).toLowerCase().includes(q)||norm(r.card_name).toLowerCase().includes(q))) return false;
+      if(f==='unregistered'&&has)return false;
+      if(f==='registered'&&!has)return false;
+      if(q&&!(norm(r.card_no).toLowerCase().includes(q)||norm(r.card_name).toLowerCase().includes(q)))return false;
       return true;
     });
-    if(reset || !activeIndices.includes(currentIndex)) currentIndex=activeIndices[0] ?? rows.findIndex(r=>norm(r.volume)===v);
+    if(reset||!activeIndices.includes(currentIndex))currentIndex=activeIndices[0]??rows.findIndex(r=>norm(r.volume)===v);
     render();
   }
   function render(){
-    const r=rows[currentIndex]; if(!r) return;
-    const vol=E.volume.value;
-    const volumeRows=rows.filter(x=>norm(x.volume)===vol);
-    const reg=volumeRows.filter(x=>norm(x.qr_url)).length;
-    const allReg=rows.filter(x=>norm(x.qr_url)).length;
-    E.progressText.textContent=`${reg} / ${volumeRows.length} 登録済み`;
-    E.progressBar.style.width=(volumeRows.length?reg/volumeRows.length*100:0).toFixed(1)+'%';
+    const r=rows[currentIndex];if(!r)return;
+    const vol=E.volume.value,volumeRows=rows.filter(x=>norm(x.volume)===vol),reg=volumeRows.filter(x=>norm(x.qr_url)).length;
     const p=activeIndices.indexOf(currentIndex);
-    E.positionText.textContent=activeIndices.length?`${p+1} / ${activeIndices.length}`:'対象なし';
-    E.registeredBadge.textContent=`この弾 登録 ${reg}`;
-    E.remainingBadge.textContent=`未登録 ${volumeRows.length-reg}`;
-    E.allBadge.textContent=`全11弾 ${allReg} / ${rows.length}`;
-
-    E.cardNo.textContent=norm(r.card_no);
-    E.cardName.textContent=norm(r.card_name);
-    E.cardImg.src=norm(r.image_url);
-    E.cardImg.alt=norm(r.card_name);
-
-    const info=[['タイプ',inferType(r)],['種類',norm(r.category)],['レアリティ',norm(r.rarity)],['ブランド',norm(r.brand)]].filter(x=>x[1]);
-    E.chips.innerHTML=info.map(([a,b])=>`<span class="chip">${esc(a)}: ${esc(b)}</span>`).join('');
+    E.progressText.textContent=`${reg}/${volumeRows.length} 登録`;
+    E.positionText.textContent=activeIndices.length?`${p+1}/${activeIndices.length}`:'対象なし';
+    E.progressBar.style.width=(volumeRows.length?reg/volumeRows.length*100:0).toFixed(1)+'%';
+    E.cardNo.textContent=norm(r.card_no);E.cardName.textContent=norm(r.card_name);
+    E.cardImg.src=norm(r.image_url);E.cardImg.alt=norm(r.card_name);
+    const info=[inferType(r),norm(r.category),norm(r.rarity),norm(r.brand)].filter(Boolean);
+    E.chips.innerHTML=info.map(x=>`<span class="chip">${esc(x)}</span>`).join('');
     E.dressKey.textContent=norm(r.dress_key)?`dress_key: ${norm(r.dress_key)}`:'';
     if(norm(r.detail_url)){E.detailLink.href=r.detail_url;E.detailLink.classList.remove('hidden')}else E.detailLink.classList.add('hidden');
-
-    const qr=norm(r.qr_url);
-    E.currentQr.textContent=qr||'QR未登録';
-    E.currentQr.style.color=qr?'var(--ok)':'var(--muted)';
-    E.manualQr.value=qr;
+    const qr=norm(r.qr_url);E.currentQr.textContent=qr||'QR未登録';E.currentQr.style.color=qr?'var(--ok)':'var(--muted)';E.manualQr.value=qr;
     save();
   }
   function msg(t,k=''){E.scanMsg.className='scanmsg'+(k?' '+k:'');E.scanMsg.textContent=t;}
+  function flash(r){
+    clearTimeout(flashTimer);
+    E.flashName.textContent=norm(r.card_name);
+    E.flashNo.textContent=norm(r.card_no);
+    E.flash.classList.add('show');
+    flashTimer=setTimeout(()=>E.flash.classList.remove('show'),420);
+  }
   function dupOwner(qr){return rows.findIndex((r,i)=>i!==currentIndex&&norm(r.qr_url)===norm(qr));}
   function register(qr){
-    qr=norm(qr); if(!qr) return;
+    qr=norm(qr);if(!qr)return;
     const d=dupOwner(qr);
     if(d>=0){
       const o=rows[d];
-      if(!confirm(`このQRは登録済みです。\n\n${o.volume} / ${o.card_no} ${o.card_name}\n\n現在のカードにも登録しますか？`)) return;
+      if(!confirm(`このQRは登録済みです。\n\n${o.volume} / ${o.card_no} ${o.card_name}\n\n現在のカードにも登録しますか？`))return;
     }
-    rows[currentIndex].qr_url=qr;
-    msg(`✓ 登録しました: ${rows[currentIndex].card_no}`,'ok');
+    const scannedRow=rows[currentIndex];
+    scannedRow.qr_url=qr;
+    flash(scannedRow);
+    msg(`✓ ${scannedRow.card_no} 登録完了`,'ok');
     render();
-    const delay=Number(E.autoNext.value);
-    if(delay>0)setTimeout(()=>move(1),delay);
+    const delay=Number(E.autoNext.value);if(delay>0)setTimeout(()=>move(1),delay);
   }
   function move(delta){
     if(!activeIndices.length)return;
-    let p=activeIndices.indexOf(currentIndex); if(p<0)p=0;
-    p=Math.max(0,Math.min(activeIndices.length-1,p+delta));
-    currentIndex=activeIndices[p];
-    render(); msg('QRをスキャンしてください。');
+    let p=activeIndices.indexOf(currentIndex);if(p<0)p=0;
+    p=Math.max(0,Math.min(activeIndices.length-1,p+delta));currentIndex=activeIndices[p];render();msg('QRをスキャンしてください。');
   }
   function jumpUnreg(dir){
-    const v=E.volume.value;
-    const c=rows.map((r,i)=>i).filter(i=>norm(rows[i].volume)===v&&!norm(rows[i].qr_url));
+    const v=E.volume.value,c=rows.map((r,i)=>i).filter(i=>norm(rows[i].volume)===v&&!norm(rows[i].qr_url));
     if(!c.length){msg('この弾の未登録カードはありません。','ok');return;}
-    if(dir>0) currentIndex=c.find(i=>i>currentIndex)??c[0];
-    else currentIndex=[...c].reverse().find(i=>i<currentIndex)??c[c.length-1];
-    render();
+    if(dir>0)currentIndex=c.find(i=>i>currentIndex)??c[0];else currentIndex=[...c].reverse().find(i=>i<currentIndex)??c[c.length-1];render();
   }
   function csvEscape(v){v=(v??'').toString();return /[",\r\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;}
   function exportRows(data,name){
-    const lines=[HEADERS.map(csvEscape).join(',')];
-    data.forEach(r=>lines.push(HEADERS.map(h=>csvEscape(r[h]??'')).join(',')));
-    const blob=new Blob(["\uFEFF"+lines.join('\r\n')],{type:'text/csv;charset=utf-8'});
-    const a=document.createElement('a');
-    a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();
-    setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500);
+    const lines=[HEADERS.map(csvEscape).join(',')];data.forEach(r=>lines.push(HEADERS.map(h=>csvEscape(r[h]??'')).join(','));
+    const blob=new Blob(["\uFEFF"+lines.join('\r\n')],{type:'text/csv;charset=utf-8'}),a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500);
   }
-  function stamp(){
-    const d=new Date();
-    return `${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}_${String(d.getHours()).padStart(2,'0')}${String(d.getMinutes()).padStart(2,'0')}`;
-  }
+  function stamp(){const d=new Date();return `${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}_${String(d.getHours()).padStart(2,'0')}${String(d.getMinutes()).padStart(2,'0')}`;}
   async function startScanner(){
-    if(scanning)return;
-    if(typeof Html5Qrcode==='undefined'){msg('QRライブラリを読み込めませんでした。','danger');return;}
+    if(scanning)return;if(typeof Html5Qrcode==='undefined'){msg('QRライブラリを読み込めませんでした。','danger');return;}
     try{
       scanner=scanner||new Html5Qrcode('reader');
-      await scanner.start({facingMode:'environment'},{fps:10,qrbox:{width:240,height:240},aspectRatio:1},decoded=>{
-        const now=Date.now(); if(decoded===lastScan&&now-lastScanAt<1800)return;
-        lastScan=decoded;lastScanAt=now;register(decoded);
+      await scanner.start({facingMode:'environment'},{fps:12,qrbox:{width:230,height:230},aspectRatio:1},decoded=>{
+        const now=Date.now();if(decoded===lastScan&&now-lastScanAt<1800)return;lastScan=decoded;lastScanAt=now;register(decoded);
       },()=>{});
-      scanning=true;E.start.disabled=true;E.stop.disabled=false;msg('カメラ起動中。QRを枠内に入れてください。');
-    }catch(e){msg('カメラを開始できません。HTTPS上で開いているか、カメラ許可を確認してください。','danger');}
+      scanning=true;E.start.disabled=true;E.stop.disabled=false;msg('カメラ起動中。上のカードを見ながらQRを読み取ってください。');
+    }catch(e){msg('カメラを開始できません。HTTPSとカメラ許可を確認してください。','danger');}
   }
-  async function stopScanner(){
-    if(!scanner||!scanning)return;
-    try{await scanner.stop()}catch(e){}
-    scanning=false;E.start.disabled=false;E.stop.disabled=true;msg('カメラを停止しました。');
-  }
+  async function stopScanner(){if(!scanner||!scanning)return;try{await scanner.stop()}catch(e){}scanning=false;E.start.disabled=false;E.stop.disabled=true;msg('カメラを停止しました。');}
 
-  setupVolumes();
-  restore();
-  applyFilter(false);
+  setupVolumes();restore();applyFilter(false);
 
-  E.volume.onchange=()=>applyFilter(true);
-  E.filter.onchange=()=>applyFilter(true);
-  E.search.oninput=()=>applyFilter(true);
+  E.volume.onchange=()=>applyFilter(true);E.filter.onchange=()=>applyFilter(true);E.search.oninput=()=>applyFilter(true);
   E.clearSearch.onclick=()=>{E.search.value='';applyFilter(true)};
-  E.prev.onclick=()=>move(-1);E.next.onclick=()=>move(1);E.skip.onclick=()=>move(1);
+  [E.prev,E.bPrev].forEach(x=>x.onclick=()=>move(-1));
+  [E.next,E.bNext].forEach(x=>x.onclick=()=>move(1));
+  [E.skip,E.bSkip].forEach(x=>x.onclick=()=>move(1));
   E.jumpPrev.onclick=()=>jumpUnreg(-1);E.jumpNext.onclick=()=>jumpUnreg(1);
-  E.start.onclick=startScanner;E.stop.onclick=stopScanner;
-  E.manualSave.onclick=()=>register(E.manualQr.value);
-  E.clearQr.onclick=()=>{
-    if(norm(rows[currentIndex].qr_url)&&!confirm('現在のQRを削除しますか？'))return;
-    rows[currentIndex].qr_url='';render();msg('現在のQRを削除しました。','warn');
-  };
-  E.exportVolume.onclick=()=>{
-    const v=E.volume.value;
-    exportRows(rows.filter(r=>norm(r.volume)===v),`aikatsu_stars_${v.replace(/[^\w一-龠ぁ-んァ-ン]/g,'_')}_qr_${stamp()}.csv`);
-  };
+  E.start.onclick=startScanner;E.stop.onclick=stopScanner;E.manualSave.onclick=()=>register(E.manualQr.value);
+  E.clearQr.onclick=()=>{if(norm(rows[currentIndex].qr_url)&&!confirm('現在のQRを削除しますか？'))return;rows[currentIndex].qr_url='';render();msg('現在のQRを削除しました。','warn');};
+  E.exportVolume.onclick=()=>{const v=E.volume.value;exportRows(rows.filter(r=>norm(r.volume)===v),`aikatsu_stars_${v.replace(/[^\w一-龠ぁ-んァ-ン]/g,'_')}_qr_${stamp()}.csv`)};
   E.exportAll.onclick=()=>exportRows(rows,`aikatsu_stars_all_regular_qr_${stamp()}.csv`);
-  E.reset.onclick=()=>{
-    if(!confirm('全11弾の登録済みQRをすべて消去しますか？'))return;
-    rows.forEach(r=>r.qr_url='');currentIndex=0;localStorage.removeItem(STORAGE_KEY);applyFilter(true);msg('登録データを全消去しました。','warn');
-  };
+  E.reset.onclick=()=>{if(!confirm('全11弾の登録済みQRをすべて消去しますか？'))return;rows.forEach(r=>r.qr_url='');currentIndex=0;localStorage.removeItem(STORAGE_KEY);applyFilter(true);msg('登録データを全消去しました。','warn');};
 })();
 </script>
 </body>
